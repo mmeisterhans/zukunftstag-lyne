@@ -1,0 +1,6 @@
+/* Probiere andere Farbnamen und Schriften aus. */
+body {
+  background-color: white;
+  color: black;
+  font-family: Arial;
+}
