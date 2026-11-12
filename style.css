@@ -1,6 +1,18 @@
 /* Probiere andere Farbnamen und Schriften aus. */
 body {
-  background-color: white;
-  color: black;
-  font-family: Arial;
+  background-color: rgb(72, 160, 148);
+  color: rgb(48, 48, 48);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.bilder {
+  display: flex;
+  gap: 10px;
+}
+
+.bild {
+  border: 1px solid black;
+  
 }
