@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6852c9"><title>Wortwechsel · Dein Vokabeltrainer</title>
+  <link rel="stylesheet" href="style.css"><script src="core.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <header><a href="./" class="brand"><span aria-hidden="true">↔</span> Wortwechsel</a><a href="../index.html">Lynes World ↗</a></header>
+  <main>
+    <section class="intro"><span class="eyebrow">DEINE WÖRTER. DEIN TEMPO.</span><h1>Vokabeln rein.<br><span>Wissen bleibt.</span></h1><p>Bring deine Liste mit. Lass dich abfragen.<br>Mit deiner Stimme oder mit der Tastatur.</p><div class="pills"><span>✦ Ohne Lautschrift</span><span>↔ In beide Richtungen</span><span>♫ Zum Anhören</span></div></section>
+    <section id="setup" class="panel" aria-labelledby="setup-title">
+      <div class="heading"><div><span class="eyebrow">01 / DEINE VOKABELN</span><h2 id="setup-title">Was lernen wir heute?</h2></div><span class="badge">Aa</span></div>
+      <div class="languages"><label>Sprache links<select id="left-language"><option value="en-GB">Englisch</option><option value="de-DE">Deutsch</option><option value="fr-FR">Französisch</option><option value="it-IT">Italienisch</option><option value="es-ES">Spanisch</option><option value="pt-PT">Portugiesisch</option><option value="la">Latein</option></select></label><span aria-hidden="true">↔</span><label>Sprache rechts<select id="right-language"><option value="de-DE">Deutsch</option><option value="en-GB">Englisch</option><option value="fr-FR">Französisch</option><option value="it-IT">Italienisch</option><option value="es-ES">Spanisch</option><option value="pt-PT">Portugiesisch</option><option value="la">Latein</option></select></label></div>
+      <div class="input-heading"><label for="list">Deine Vokabelliste</label><button id="example" class="text-button" type="button">Beispiel einsetzen ↗</button></div>
+      <textarea id="list" rows="7" maxlength="40000" aria-describedby="list-hint" placeholder="apple [ˈæpəl] – Apfel&#10;house /haʊs/ – Haus&#10;to learn – lernen"></textarea>
+      <p class="hint" id="list-hint">Ein Wortpaar pro Zeile. Trenne die Sprachen mit – , = , ; oder einem Tabulator. Lautschrift in [Klammern] oder /Schrägstrichen/ wird entfernt.</p>
+      <div class="import-actions"><button id="camera-button" class="secondary" type="button">Foto aufnehmen</button><button id="file-button" class="secondary" type="button">Bild / Textdatei öffnen</button></div>
+      <input id="camera" type="file" accept="image/*" capture="environment" hidden><input id="file" type="file" accept="image/jpeg,image/png,image/webp,text/plain,.txt" hidden>
+      <p id="import-status" role="status" hidden></p><p id="error" class="error" role="alert" hidden></p>
+      <button id="parse" class="primary wide" type="button">Liste bereinigen & prüfen <span aria-hidden="true">→</span></button>
+      <section id="review" hidden aria-labelledby="review-title"><div class="heading"><h3 id="review-title">Passen die Wortpaare?</h3><span id="pair-count" class="hint"></span></div><p class="hint">Prüfe besonders bei Fotos die Zuordnung. Du kannst jedes Wort verbessern.</p><p id="skipped" class="notice" hidden></p><div id="pairs"></div><button id="add-pair" type="button" class="text-button">+ Wortpaar hinzufügen</button>
+        <div class="options"><label>Abfragerichtung<select id="direction"><option value="forward">Links → rechts</option><option value="reverse">Rechts → links</option><option value="mixed">Beide Richtungen gemischt</option></select></label><label class="check"><input id="auto-speak" type="checkbox"> Wörter automatisch vorlesen</label><label class="check"><input id="shuffle" type="checkbox" checked> Reihenfolge mischen</label></div>
+        <button id="start" type="button" class="primary wide">Los geht’s <span aria-hidden="true">→</span></button>
+      </section>
+    </section>
+    <section id="practice" class="panel practice" hidden aria-labelledby="prompt"><div class="heading"><span id="position" class="eyebrow"></span><button class="text-button edit" type="button">← Zur Liste</button></div><progress id="progress" value="0" max="1" aria-label="Lernfortschritt"></progress><p class="hint" id="translate-label"></p><h2 id="prompt" tabindex="-1"></h2><button id="speak" class="secondary" type="button">♫ Wort anhören</button>
+      <form id="answer-form"><label for="answer" id="answer-label">Deine Übersetzung</label><div class="answer-row"><input id="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Schreiben oder sprechen …"><button id="microphone" class="secondary" type="button">Mikrofon</button></div><p id="speech-status" class="hint" role="status"></p><div class="import-actions"><button id="check" class="primary" type="submit">Antwort prüfen</button><button id="reveal" class="text-button" type="button">Antwort zeigen</button></div></form>
+      <div id="feedback" class="feedback" role="status" hidden><strong id="feedback-title"></strong><p id="correct-answer"></p><button id="next" type="button" class="primary">Weiter →</button></div>
+      <p class="hint small">Gross- und Kleinschreibung zählen nicht. Alternative Übersetzungen kannst du in der Liste mit / trennen.</p>
+    </section>
+    <section id="result" class="panel result" hidden aria-labelledby="result-title"><div class="celebrate" aria-hidden="true">✦</div><span class="eyebrow">RUNDE GESCHAFFT</span><h2 id="result-title" tabindex="-1">Wort für Wort besser.</h2><p id="score"></p><div class="import-actions"><button id="retry" class="primary" type="button">Unsichere Wörter üben</button><button id="repeat" class="secondary" type="button">Alle wiederholen</button><button class="text-button edit" type="button">Zur Liste</button></div></section>
+    <footer>Deine Liste bleibt in dieser App auf deinem Gerät und wird nicht dauerhaft gespeichert.<br>Die Texterkennung braucht Internet. Beim Sprechen kann dein Browser einen Sprachdienst verwenden.<br><span id="support-note"></span></footer>
+  </main>
+</body>
+</html>

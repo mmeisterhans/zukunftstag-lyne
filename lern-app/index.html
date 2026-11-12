@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#255b48">
+  <title>Textfuchs · Dein Text wird zum Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span aria-hidden="true">✳</span> Textfuchs</a><a class="back" href="../index.html">Lynes World ↗</a></header>
+  <main>
+    <section class="intro"><span class="eyebrow">DEIN KLEINER LERNBEGLEITER</span><h1>Ein Text. Viele<br><em>Aha-Momente.</em></h1><p>Fotografiere deinen Text, entdecke die Wörter<br class="desktop"> und teste, was du schon weisst.</p><span class="tag">✦ Ohne Anmeldung · Lernen in deinem Tempo</span></section>
+    <ol class="steps" aria-label="So funktioniert es"><li class="active" id="step1"><span>1</span> Text einlesen</li><li id="step2"><span>2</span> Fragen üben</li><li id="step3"><span>3</span> Geschafft!</li></ol>
+    <section class="card" id="editor" aria-labelledby="editor-title">
+      <div class="card-heading"><div><span class="eyebrow">SCHRITT 1</span><h2 id="editor-title">Was möchtest du lernen?</h2></div><span class="paper-icon" aria-hidden="true">▤</span></div>
+      <div class="upload-box"><span class="upload-icon" aria-hidden="true">⌁</span><h3>Bring deinen Text mit</h3><p>Ein scharfes Foto von einer Buchseite oder einem Arbeitsblatt genügt.</p><div class="actions"><button type="button" id="camera-button" class="primary">Foto aufnehmen</button><button type="button" id="upload-button" class="secondary">Bild auswählen</button></div><small>JPG, PNG oder WebP · maximal 15 MB</small></div>
+      <input type="file" id="camera" accept="image/*" capture="environment" hidden>
+      <input type="file" id="upload" accept="image/jpeg,image/png,image/webp" hidden>
+      <div id="scan-preview" hidden><img id="preview" alt="Dein ausgewählter Text zum Einlesen"><p id="scan-status" role="status" aria-live="polite"></p><progress id="scan-progress" max="1" value="0" aria-label="Fortschritt der Texterkennung"></progress></div>
+      <div class="divider"><span>oder direkt schreiben</span></div>
+      <div class="text-heading"><label for="source-text">Dein Text</label><button type="button" id="example" class="text-button">Römer-Beispiel ausprobieren ↗</button></div>
+      <textarea id="source-text" rows="8" maxlength="20000" placeholder="Füge hier deinen Text ein. Nach dem Scannen kannst du hier auch erkannte Wörter korrigieren." aria-describedby="text-hint"></textarea>
+      <div class="text-meta"><small id="text-hint">Lies den erkannten Text kurz durch und verbessere Fehler.</small><small id="word-count">0 Wörter</small></div>
+      <p id="error" role="alert" hidden></p>
+      <p id="generation-status" role="status" hidden>Die KI liest deinen Text und erstellt Verständnisfragen …</p>
+      <div class="card-footer"><p>Verstehe, was hinter dem Text steckt.<br><small>Kurze Fragen zu Gründen, Ereignissen und Zusammenhängen.</small></p><button id="start" type="button" class="primary">Fragen erstellen <span aria-hidden="true">→</span></button></div>
+    </section>
+    <section class="card quiz" id="quiz" aria-labelledby="question" hidden>
+      <div class="quiz-heading"><span class="eyebrow" id="question-count"></span><button class="text-button edit" type="button">← Text bearbeiten</button></div>
+      <progress id="quiz-progress" max="1" value="0" aria-label="Fortschritt der Fragen"></progress>
+      <p id="question-mode"></p>
+      <h2 id="question" tabindex="-1"></h2><label for="answer">Deine kurze Antwort</label><textarea id="answer" rows="2" placeholder="Antworte kurz in deinen eigenen Worten …"></textarea>
+      <button id="reveal" class="primary" type="button">Mit dem Text vergleichen</button>
+      <div id="solution" hidden><span class="eyebrow">MÖGLICHE ANTWORT</span><p id="model-answer"></p><span class="eyebrow">DAS STEHT IM TEXT</span><blockquote id="source-answer"></blockquote><p>Vergleiche den Inhalt. Du musst nicht dieselben Wörter verwenden.</p><div class="actions"><button type="button" class="secondary" id="retry">Das übe ich noch</button><button type="button" class="primary" id="known">Das wusste ich ✓</button></div></div>
+      <details><summary>Originaltext nachlesen</summary><p id="original"></p></details>
+    </section>
+    <section class="card result" id="result" aria-labelledby="result-title" hidden><span class="result-star" aria-hidden="true">✦</span><span class="eyebrow">GUT GEMACHT!</span><h2 id="result-title" tabindex="-1">Ein Stück schlauer.</h2><p id="score"></p><div class="actions"><button type="button" class="primary" id="repeat">Noch einmal üben</button><button type="button" class="secondary edit">Text bearbeiten</button></div></section>
+    <footer><span aria-hidden="true">♡</span> Dein Foto wird im Browser eingelesen. Für eigene Fragen wird der Text an OpenAI gesendet.<br>Das Römer-Beispiel funktioniert ohne KI-Verbindung. Die App speichert deine Texte und Antworten nicht dauerhaft.</footer>
+  </main>
+</body>
+</html>

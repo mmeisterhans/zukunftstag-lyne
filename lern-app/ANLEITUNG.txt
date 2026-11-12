@@ -1,0 +1,41 @@
+TEXTFUCHS – INHALTLICHE VERSTÄNDNISFRAGEN
+
+Ohne Einrichtung ausprobieren
+Öffne index.html in diesem Ordner und wähle „Römer-Beispiel ausprobieren“.
+Diese Beispielrunde hat vier vorbereitete Verständnisfragen. Sie ist keine
+automatische KI-Auswertung. Änderungen am Beispiel benötigen die KI-Verbindung.
+
+Eigene Texte
+Dafür verwendet die App die OpenAI Responses API. Der Schlüssel bleibt auf dem
+lokalen Server. Er gehört niemals in app.js oder in ein öffentliches Repository.
+API-Aufrufe können Kosten verursachen.
+
+1. Node.js ab Version 22 installieren, falls noch nicht vorhanden.
+2. In diesem Ordner .env.example nach .env kopieren und dort den eigenen
+   OPENAI_API_KEY eintragen. Die Datei .env wird von Git ignoriert.
+3. In einem Terminal in diesem Ordner ausführen:
+   node --env-file=.env server.mjs
+4. http://127.0.0.1:3000/lern-app/ im Browser öffnen.
+
+Alternativ können OPENAI_API_KEY und OPENAI_MODEL als Umgebungsvariablen gesetzt
+und der Server mit „node server.mjs“ gestartet werden. Keine npm-Pakete nötig.
+
+Der Server ist ausschliesslich für die Nutzung auf dem eigenen Computer gedacht.
+GitHub Pages kann diesen Server nicht ausführen. Eine öffentlich erreichbare
+Version braucht eigenes Server-Hosting samt Zugriffsschutz und Nutzungslimits.
+
+Texterkennung: Das Foto wird lokal durch Tesseract.js gelesen.
+Fragen: Nur der eingelesene Text wird an OpenAI geschickt, nicht das Foto oder
+deine Antworten. Die App speichert nichts dauerhaft und setzt store: false.
+Das ist keine Aussage über die Datenaufbewahrung beim API-Anbieter.
+
+Die KI stellt kurze Fragen zu Inhalt, Gründen und Zusammenhängen und liefert
+eine mögliche Antwort mit belegender Textstelle. Die App prüft, dass dieses
+Zitat im Text vorkommt. Ob eine Antwort richtig ist, vergleichst du selbst.
+Eine inhaltliche Prüfung durch ein Sprachmodell kann Fehler enthalten.
+
+Dokumentation zur verwendeten API:
+https://developers.openai.com/api/docs/guides/structured-outputs
+
+Prüfungen (ohne API-Schlüssel und ohne kostenpflichtige Aufrufe):
+node --test questions.test.mjs
